@@ -19,7 +19,7 @@ class Task(models.Model):
     )
     status = models.CharField(
         max_length=2, choices=STATUS_CHOICES, default=STORY)
-    owner = models.OneToOneField(User, related_name="owned_tasks")
+    owner = models.ForeignKey(User, related_name="owned_tasks")
     moderator = models.ForeignKey(User, related_name="moderated_tasks")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

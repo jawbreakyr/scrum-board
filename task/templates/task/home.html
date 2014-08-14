@@ -1,0 +1,27 @@
+<!doctype html>
+{% load staticfiles %}
+
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="{% static 'css/home.css' %}"/>
+	</head>
+	<body>
+		<div class='wrapper'>
+			<div class='content'>
+				<div>
+					{% for task in tasks %}
+						<div class='task'>
+							<ul>{{ task.title }}</ul>
+							<ul>{{ task.body|truncatechars:50 }}</ul>
+							<ul>{{ task.created_at }}</ul>
+							<ul>{{ task.updated_at }}</ul>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div>
+			{{ form.as_p }}
+			</div>
+		</div>
+	</body>
+</html>
