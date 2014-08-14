@@ -1,8 +1,51 @@
+html, body {
+	margin: 0px;
+}
+
 .task {
 	background-color: pink;
 	display: inherit;
+	margin-left: 20px;
 }
 
 ul {
 	color: red;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+h1 {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	text-align: center;
+}
+
+.content {
+	background-color: #E0E4CC;
+}
+
+.header {
+	background-color: #FA6900;
+}
+
+.container {
+	width: 300px;
+}
+
+#title {
+	font-size: 10px;
+	margin-top: 2px;
+}
+
+#body {
+	font-size: 10px;
+}
+
+#create {
+	font-size: 10px;
+}
+
+#update {
+	font-size: 10px;
+	margin-bottom: 2px;
 }

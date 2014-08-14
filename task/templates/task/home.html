@@ -7,14 +7,19 @@
 	</head>
 	<body>
 		<div class='wrapper'>
+			<div class='header'>
+				<h1>Scrum Board</h1>
+				
+				<h1>Master Aldrin D' Great</h1>
+			</div>
 			<div class='content'>
-				<div>
+				<div class='container'>
 					{% for task in tasks %}
 						<div class='task'>
-							<ul>{{ task.title }}</ul>
-							<ul>{{ task.body|truncatechars:50 }}</ul>
-							<ul>{{ task.created_at }}</ul>
-							<ul>{{ task.updated_at }}</ul>
+							<ul id='title'>{{ task.title }}</ul>
+							<ul id='body'>{{ task.body|truncatechars:50 }}</ul>
+							<ul id='create'>{{ task.created_at }}</ul>
+							<ul id='update'>{{ task.updated_at }}</ul>
 						</div>
 					{% endfor %}
 				</div>
