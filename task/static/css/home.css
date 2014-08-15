@@ -4,8 +4,9 @@ html, body {
 
 .task {
 	background-color: pink;
-	display: inherit;
+	display: inline-block;
 	margin-left: 20px;
+	margin-bottom: 0;
 }
 
 ul {

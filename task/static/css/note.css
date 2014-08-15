@@ -1,0 +1,10 @@
+.note {
+    display: block;
+    margin: 0;
+    padding-left:  2px;    
+    background-color: #efefef;
+}
+
+.note p {
+    margin-left: 4px;
+}

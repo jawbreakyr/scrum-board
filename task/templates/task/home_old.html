@@ -16,17 +16,20 @@
 				<div class='container'>
 					{% for task in tasks %}
 						<div class='task'>
-							<ul id='title'>{{ task.title }}</ul>
-							<ul id='body'>{{ task.body|truncatechars:50 }}</ul>
-							<ul id='create'>{{ task.created_at }}</ul>
-							<ul id='update'>{{ task.updated_at }}</ul>
+							<p>
+								{{ task.title }}<br>
+								{{ task.body|truncatechars:50 }}<br>
+								{{ task.created_at}}<br>
+								{{ task.updated_at}}
+							</p>
 						</div>
 					{% endfor %}
 				</div>
 			</div>
-			<div>
+			<form method='POST' action="/">
 			{{ form.as_p }}
-			</div>
+			<input type="submit" value="Submit"/>
+			</form>
 		</div>
 	</body>
 </html>

@@ -1,0 +1,18 @@
+{% extends "task/base.html" %}
+{% block title %}Scrumboard{% endblock title %}
+{% load staticfiles %}
+{% block extra_head %}
+    <link rel="stylesheet" type="text/css" href=" {% static 'css/note.css' %} ">
+{% endblock extra_head %}
+{% block body %}
+    {% for task in tasks %}
+        <div class="note">
+            <p>
+                {{ task.title }}<br>
+                {{ task.body|truncatechars:50 }}<br>
+                {{ task.created_at}}<br>
+                {{ task.updated_at}}
+            </p>
+        </div>
+    {% endfor %}
+{% endblock body %}
