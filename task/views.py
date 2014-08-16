@@ -14,7 +14,7 @@ from task.models import Task
 
 # Implementing the use of generic class based views
 class PublisherView(generic.ListView):
-    template_name = 'task/home.html'
+    template_name = 'task/index.html'
     # context_object_name = "tasks"
     queryset = Task.objects.all()
 
