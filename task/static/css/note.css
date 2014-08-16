@@ -1,8 +1,13 @@
 .note {
     display: block;
     margin: 0;
-    padding-left:  2px;    
-    background-color: #efefef;
+    background-color: white;
+    width: 200px;
+    border: 1px solid gray;
+    border-bottom-right-radius: 8px;
+    padding: 0;
+    font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color: #393939;
 }
 
 .note p {
