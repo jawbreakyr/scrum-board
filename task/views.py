@@ -1,4 +1,3 @@
-from django.shortcuts import render, render_to_response
 from django.views import generic
 
 from task.forms import TaskForm
