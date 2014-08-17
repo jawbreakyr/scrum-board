@@ -21,6 +21,13 @@ class PublisherView(generic.ListView):
         context = super(PublisherView, self).get_context_data(**kwargs)
         # appended the objects to the context dictionary (force)
         context['form'] = TaskForm()
-        # appended the objects to the context dictionary (force)
-        context['tasks'] = Task.objects.all()
+        # pass tasks in the ff form
+        # {
+        #     'story': [task1, task4, task6],
+        #     'to do': [task2, task3, task5],
+        # }
+        task_data = {}
+        for choice in Task.STATUS_CHOICES:  # ready the keys
+            task_data[choice[1]] = Task.objects.all().filter(status=choice[0])
+        context['task_data'] = task_data
         return context
