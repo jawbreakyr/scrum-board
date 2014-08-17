@@ -17,3 +17,8 @@ body {
 .note p {
     margin-left: 4px;
 }
+
+.header {
+    position: absolute;
+    right: 50px;
+}

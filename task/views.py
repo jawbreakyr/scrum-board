@@ -1,6 +1,6 @@
 from django.views import generic
 
-from task.forms import TaskForm
+from task.forms import TaskForm, AuthenForm
 from task.models import Task
 
 
@@ -31,3 +31,7 @@ class PublisherView(generic.ListView):
             task_data[choice[1]] = Task.objects.all().filter(status=choice[0])
         context['task_data'] = task_data
         return context
+
+
+class LogInView(generic.FormView):
+    template_name = 'task/login.html'

@@ -4,6 +4,11 @@
 {% block extra_head %}
     <link rel="stylesheet" type="text/css" href=" {% static 'css/note.css' %} ">
 {% endblock extra_head %}
+{% block header %}
+    <div class="header">
+        <a href="login/">Login:</a>
+    </div>
+{% endblock header %}
 {% block body %}
     {% for status, tasks in task_data.items %}
         {{ status }}

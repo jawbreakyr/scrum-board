@@ -5,13 +5,14 @@ admin.autodiscover()
 
 # from task.views import HomeView
 from task.models import Task
-from task.views import PublisherView
+from task.views import PublisherView, LogInView
 
 urlpatterns = patterns('',
 	url(r'^$', PublisherView.as_view()),
 		# queryset = Task.objects.all(),
 		# context_object_name="tasks",
 		# )),
+    url(r'^login/', LogInView.as_view()),
     # Examples:
     # url(r'^$', 'scrum_board.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
