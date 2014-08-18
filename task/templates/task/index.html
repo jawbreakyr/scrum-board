@@ -10,14 +10,17 @@
     </div>
 {% endblock header %}
 {% block body %}
-    {% for task in tasks %}
-        <div class="note">
-            <p>
-                {{ task.title }}<br>
-                {{ task.body|truncatechars:50 }}<br>
-                {{ task.created_at}}<br>
-                {{ task.updated_at}}
-            </p>
-        </div>
+    {% for status, tasks in task_data.items %}
+        {{ status }}
+        {% for task in tasks %}
+            <div class="note">
+                <p>
+                    {{ task.title }}<br>
+                    {{ task.body|truncatechars:50 }}
+                    {{ task.status }}
+                </p>
+            </div>            
+        {% endfor %}
+        <br>
     {% endfor %}
 {% endblock body %}
