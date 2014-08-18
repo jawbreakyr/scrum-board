@@ -1,15 +1,17 @@
 from django.views import generic
-from django.contrib.auth import REDIRECT_FIELD_NAME, login
-from django.contrib.auth.forms import AuthenticationForm
-from django.utils.decorators import method_decorator
-from django.views.decorators.cache import never_cache
-from django.views.decorators.csrf import csrf_protect
-from django.views.generic import View
-from django.views.generic.edit import FormView
-from django.conf import settings
 from django.contrib.auth.models import User
-
-import urlparse
+from django.core.context_processors import csrf
+from django.shortcuts import render, redirect
+from django.contrib import auth
+# from django.contrib.auth import REDIRECT_FIELD_NAME, login
+# from django.contrib.auth.forms import AuthenticationForm
+# from django.utils.decorators import method_decorator
+# from django.views.decorators.cache import never_cache
+# from django.views.decorators.csrf import csrf_protect
+#from django.views.generic import View
+# from django.views.generic.edit import FormView
+#from django.conf import settings
+#import urlparse
 
 from task.forms import TaskForm
 from task.models import Task
@@ -48,40 +50,63 @@ class PublisherView(generic.ListView):
         return context
 
 
-class LoginView(FormView):
-    form_class = AuthenticationForm
-    redirect_field_name = REDIRECT_FIELD_NAME
-    template_name = 'task/login.html'
+def login(request):
+    c = {}
+    c.update(csrf(request))
+    return render(request, 'task/login.html', c)
 
-    @method_decorator(csrf_protect)
-    @method_decorator(never_cache)
-    def dispatch(self, *args, **kwargs):
-        return super(LoginView, self).dispatch(*args, **kwargs)
+def authen_view(request):
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+    user = auth.authenticate(username=username, password=password)
 
-    def form_valid(self, form):
-        """
-        The user has provided valid credentials (this was checked in AuthenticationForm.is_valid()). So now we
-        can check the test cookie stuff and log him in.
-        """
-        self.check_and_delete_test_cookie()
-        login(self.request, form.get_user())
-        return super(LoginView, self).form_valid(form)
-
-    def form_invalid(self, form):
-        """
-        The user has provided invalid credentials (this was checked in AuthenticationForm.is_valid()). So now we
-        set the test cookie again and re-render the form with errors.
-        """
-        self.set_test_cookie()
-        return super(LoginView, self).form_invalid(form)
-
-    def set_test_cookie(self):
-        self.request.session.set_test_cookie()
+    if user is not None:
+        auth.login(request, user)
+        return redirect('index')
+    else:
+        return redirect('login')
 
 
-    def get(self, request, *args, **kwargs):
-        """
-        Same as django.views.generic.edit.ProcessFormView.get(), but adds test cookie stuff
-        """
-        self.set_test_cookie()
-        return super(LoginView, self).get(request, *args, **kwargs)
+
+"""
+still cant grasp the power need more time
+to carve in for mean time settle down for 
+function based views.
+"""
+# class LoginView(FormView):
+#     form_class = AuthenticationForm
+#     redirect_field_name = REDIRECT_FIELD_NAME
+#     template_name = 'task/login.html'
+
+#     @method_decorator(csrf_protect)
+#     @method_decorator(never_cache)
+#     def dispatch(self, *args, **kwargs):
+#         return super(LoginView, self).dispatch(*args, **kwargs)
+
+#     def form_valid(self, form):
+#         """
+#         The user has provided valid credentials (this was checked in AuthenticationForm.is_valid()). So now we
+#         can check the test cookie stuff and log him in.
+#         """
+#         self.check_and_delete_test_cookie()
+#         login(self.request, form.get_user())
+#         return super(LoginView, self).form_valid(form)
+
+#     def form_invalid(self, form):
+#         """
+#         The user has provided invalid credentials (this was checked in AuthenticationForm.is_valid()). So now we
+#         set the test cookie again and re-render the form with errors.
+#         """
+#         self.set_test_cookie()
+#         return super(LoginView, self).form_invalid(form)
+
+#     def set_test_cookie(self):
+#         self.request.session.set_test_cookie()
+
+
+#     def get(self, request, *args, **kwargs):
+#         """
+#         Same as django.views.generic.edit.ProcessFormView.get(), but adds test cookie stuff
+#         """
+#         self.set_test_cookie()
+#         return super(LoginView, self).get(request, *args, **kwargs)

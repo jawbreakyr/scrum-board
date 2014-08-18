@@ -6,18 +6,18 @@ admin.autodiscover()
 
 # from task.views import HomeView
 from task.models import Task
-from task.views import PublisherView, LoginView
+from task.views import PublisherView
+from task import views
+
 
 urlpatterns = patterns('',
-	url(r'^$', PublisherView.as_view()),
+	url(r'^$', PublisherView.as_view(), name='index'),
 		# queryset = Task.objects.all(),
 		# context_object_name="tasks",
 		# )),
-    url(r'^login/$',
-                LoginView.as_view(
-                    form_class=AuthenticationForm,
-                    success_url='/task/loggedin.html'),
-                name="login"),
+    url(r'^login/', views.login, name='login'),
+    url(r'^authen/', views.authen_view, name='authen_view'),
+    # url(r'^login/$', LoginView.as_view(), name="login"),
     # Examples:
     # url(r'^$', 'scrum_board.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
