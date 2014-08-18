@@ -5,16 +5,16 @@
     <link rel="stylesheet" type="text/css" href=" {% static 'css/note.css' %} ">
 {% endblock extra_head %}
 {% block header %}
-    <div class="head_wrapp">
+    <!-- <div class="head_wrapp">
         <div class="header">
             <a href="login/">Login:</a>
         </div>
-    </div>
+    </div> -->
 {% endblock header %}
 {% block body %}
-    <div class="body_wrapp">
+    <div class="board-wrapper">
         {% for status, tasks in task_data.items %}
-            <div class="column_wrapp">
+            <div class="column_wrapper">
                 <span>{{ status }}</span>
             {% for task in tasks %}
                 <div class="note">
