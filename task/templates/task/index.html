@@ -18,11 +18,10 @@
                 <span>{{ status }}</span>
             {% for task in tasks %}
                 <div class="note">
-                    <p>
+                    <article>
                         {{ task.title }}<br>
                         {{ task.body|truncatechars:50 }}
-                        {{ task.status }}
-                    </p>
+                    </article>
                 </div>            
             {% endfor %}
             </div>
