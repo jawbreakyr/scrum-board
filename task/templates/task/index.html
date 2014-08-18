@@ -5,22 +5,27 @@
     <link rel="stylesheet" type="text/css" href=" {% static 'css/note.css' %} ">
 {% endblock extra_head %}
 {% block header %}
-    <div class="header">
-        <a href="login/">Login:</a>
+    <div class="head_wrapp">
+        <div class="header">
+            <a href="login/">Login:</a>
+        </div>
     </div>
 {% endblock header %}
 {% block body %}
-    {% for status, tasks in task_data.items %}
-        {{ status }}
-        {% for task in tasks %}
-            <div class="note">
-                <p>
-                    {{ task.title }}<br>
-                    {{ task.body|truncatechars:50 }}
-                    {{ task.status }}
-                </p>
-            </div>            
+    <div class="body_wrapp">
+        {% for status, tasks in task_data.items %}
+            <div class="column_wrapp">
+                <span>{{ status }}</span>
+            {% for task in tasks %}
+                <div class="note">
+                    <p>
+                        {{ task.title }}<br>
+                        {{ task.body|truncatechars:50 }}
+                        {{ task.status }}
+                    </p>
+                </div>            
+            {% endfor %}
+            </div>
         {% endfor %}
-        <br>
-    {% endfor %}
+    </div>
 {% endblock body %}

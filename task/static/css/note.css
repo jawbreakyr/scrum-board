@@ -22,3 +22,17 @@ body {
     position: absolute;
     right: 50px;
 }
+
+.column_wrapp {
+    display: inline-block;
+}
+
+.body_wrapp {
+    margin: 3px;
+}
+
+.head_wrapp {
+    display: inline-block;
+    height: 50px;
+    margin-top: 10px;
+}
