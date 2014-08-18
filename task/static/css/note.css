@@ -23,16 +23,8 @@ body {
     right: 50px;
 }
 
-.column_wrapp {
-    display: inline-block;
-}
-
-.body_wrapp {
-    margin: 3px;
-}
-
-.head_wrapp {
-    display: inline-block;
-    height: 50px;
-    margin-top: 10px;
+.board-wrapper .column_wrapper {
+    display: inline;
+    float: left;
+    margin-left: 1em;
 }
