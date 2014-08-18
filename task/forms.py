@@ -20,9 +20,9 @@ class TaskForm(ModelForm):
 		return self.cleaned_data
 
 
-class AuthenForm(AuthenticationForm):
+# class AuthenForm(AuthenticationForm):
 
-	class Meta():
-		model = AuthenticationForm()
-		fields = ('username', 'password')
+# 	class Meta():
+# 		model = AuthenticationForm()
+# 		fields = ('username', 'password')
 

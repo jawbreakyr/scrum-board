@@ -1,6 +1,6 @@
 from django.views import generic
 
-from task.forms import TaskForm, AuthenForm
+from task.forms import TaskForm
 from task.models import Task
 
 
