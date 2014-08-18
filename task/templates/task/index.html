@@ -3,11 +3,12 @@
 {% load staticfiles %}
 {% block extra_head %}
     <link rel="stylesheet" type="text/css" href=" {% static 'css/note.css' %} ">
+    <link rel="stylesheet" type="text/css" href=" {% static 'css/header.css' %} ">
 {% endblock extra_head %}
 {% block header %}
     <div class="head_wrapp">
         <div class="header">
-            <a href="login/">Login:</a>
+            <button class="button"><a href="login/">Login:</a></button>
         </div>
     </div>
 {% endblock header %}
@@ -18,12 +19,13 @@
                 <span>{{ status }}</span>
             {% for task in tasks %}
                 <div class="note">
-                    <p>
+                    <article>                 
                         {{ task.title }}<br>
                         {{ task.body|truncatechars:50 }}
-                    </p>
+                    </article>
                 </div>            
             {% endfor %}
+            {{ user }}
             </div>
         {% endfor %}
     </div>

@@ -3,13 +3,18 @@
 {% load staticfiles %}
 {% block extra_head %}
     <link rel="stylesheet" type="text/css" href=" {% static 'css/note.css' %} ">
+    <link rel="alternate" type="" href=" {% static 'css/header.css' %} ">
 {% endblock extra_head %}
 {% block header %}
 
 {% endblock header %}
 {% block body %}
-	<form action="">
-		{{ form }}
-		<input type="submit"/>
-	</form>
+	""" trying to yield an error manualy """
+	{# {% if form.error_message %}
+		<p>Invalid Login</p>
+	{% endif %} #}
+		<form action="">
+			{{ form }}
+			<input type="submit"/>
+		</form>
 {% endblock body %}

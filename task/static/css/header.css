@@ -1,0 +1,15 @@
+.head_wrapp {
+    position: relative;
+    height: 80px;
+    background-color: #E3E3E3;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    margin-left: 7px;
+
+}
+
+.header {
+    padding: 25px;
+    position: absolute;
+    right: 25px;
+}

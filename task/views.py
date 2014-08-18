@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.generic import View
 from django.views.generic.edit import FormView
 from django.conf import settings
+from django.contrib.auth.models import User
 
 import urlparse
 
@@ -43,6 +44,7 @@ class PublisherView(generic.ListView):
             task_data.append(
                 (choice[1], Task.objects.all().filter(status=choice[0])))
         context['task_data'] = task_data
+        context['user'] = User
         return context
 
 

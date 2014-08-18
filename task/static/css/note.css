@@ -2,12 +2,6 @@ body {
     background-color: #EEE;
 }
 
-
-.header {
-    position: absolute;
-    right: 50px;
-}
-
 .board-wrapper {
     background-color: #0E9F67;
     font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
@@ -30,7 +24,7 @@ body {
     display: block;
     margin: 0;
     background-color: white;
-    width: 240px;
+    width: 200px;
     border-radius: 4px;
     color: #393939;
     margin-top: 8px;
