@@ -1,0 +1,15 @@
+{% extends "task/base.html" %}
+{% block title %}Login{% endblock title %}
+{% load staticfiles %}
+{% block extra_head %}
+    <link rel="stylesheet" type="text/css" href=" {% static 'css/note.css' %} ">
+{% endblock extra_head %}
+{% block header %}
+
+{% endblock header %}
+{% block body %}
+	<form action="">
+		{{ form }}
+		<input type="submit"/>
+	</form>
+{% endblock body %}

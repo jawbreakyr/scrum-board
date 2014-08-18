@@ -1,18 +1,23 @@
 from django.conf.urls import patterns, include, url
+from django.contrib.auth.forms import AuthenticationForm
 
 from django.contrib import admin
 admin.autodiscover()
 
 # from task.views import HomeView
 from task.models import Task
-from task.views import PublisherView, LogInView
+from task.views import PublisherView, LoginView
 
 urlpatterns = patterns('',
 	url(r'^$', PublisherView.as_view()),
 		# queryset = Task.objects.all(),
 		# context_object_name="tasks",
 		# )),
-    url(r'^login/', LogInView.as_view()),
+    url(r'^login/$',
+                LoginView.as_view(
+                    form_class=AuthenticationForm,
+                    success_url='/task/loggedin.html'),
+                name="login"),
     # Examples:
     # url(r'^$', 'scrum_board.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
