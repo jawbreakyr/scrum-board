@@ -2,29 +2,41 @@ body {
     background-color: #EEE;
 }
 
-.note {
-    display: block;
-    margin: 0;
-    background-color: white;
-    width: 200px;
-    border: 1px solid #CCC;
-    border-bottom-right-radius: 8px;
-    padding: 0;
-    font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
-    color: #393939;
-}
-
-.note p {
-    margin-left: 4px;
-}
 
 .header {
     position: absolute;
     right: 50px;
 }
 
-.board-wrapper .column_wrapper {
+.board-wrapper {
+    background-color: green;
+    font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+.column_wrapper {
     display: inline;
     float: left;
-    margin-left: 1em;
+    margin-left: 0.5em;
+    background-color: #E3E3E3;
+    padding: 0.5em;
+    border-radius: 4px;
+}
+
+.column_wrapper span {
+    font-weight: bold;
+}
+
+.note {
+    display: block;
+    margin: 0;
+    background-color: white;
+    width: 240px;
+    border-radius: 4px;
+    color: #393939;
+    margin-top: 8px;
+    box-shadow: 0px 2px #CCC;
+}
+
+.note article {
+    padding: 8px;
 }
