@@ -28,9 +28,10 @@ class PublisherView(generic.ListView):
             'to do': [task2, task3, task5],
         }
         """
-        task_data = {}
+        task_data = []
         for choice in Task.STATUS_CHOICES:  # ready the keys
-            task_data[choice[1]] = Task.objects.all().filter(status=choice[0])
+            task_data.append(
+                (choice[1], Task.objects.all().filter(status=choice[0])))
         context['task_data'] = task_data
         return context
 
