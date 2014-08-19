@@ -7,8 +7,10 @@
 {% endblock extra_head %}
 {% block header %}
     <div class="head_wrapp">
-        <div class="header">
-            <button class="button"><a href="login/">Login:</a></button>
+        <div id="head" class="header">
+            <form action="{% url 'login' %}">
+                <input type="submit" value="Log in:"/>
+            </form>
         </div>
     </div>
 {% endblock header %}
@@ -17,16 +19,19 @@
         {% for status, tasks in task_data %}
             <div class="column_wrapper">
                 <span>{{ status }}</span>
-            {% for task in tasks %}
-                <div class="note">
-                    <article>                 
-                        {{ task.title }}<br>
-                        {{ task.body|truncatechars:50 }}
-                    </article>
-                </div>            
-            {% endfor %}
-            {{ user }}
+                {% for task in tasks %}
+                    <div class="note">
+                        <article>                 
+                            <strong>{{ task.title }}</strong><br>
+                            {{ task.body|truncatechars:50 }}<br/>
+                            {{ user }}
+                        </article>
+                    </div>            
+                {% endfor %}
             </div>
         {% endfor %}
+        <div class="side-bar">
+            <h5>{{ user }}</h5>
+        </div>
     </div>
 {% endblock body %}

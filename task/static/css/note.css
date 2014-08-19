@@ -34,3 +34,15 @@ body {
 .note article {
     padding: 8px;
 }
+
+.side-bar {
+    display: inline;
+    float: left;
+    margin-left: 0.5em;
+    background-color: #E3E3E3;
+    padding: 0.5em;
+    border-radius: 4px;
+    width: 223px;
+    height: 410px;
+
+}

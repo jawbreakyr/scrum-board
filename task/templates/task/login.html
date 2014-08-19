@@ -7,34 +7,23 @@
 {% endblock extra_head %}
 {% block header %}
 
+
 {% endblock header %}
 {% block body %}
-	<!--{# """ trying to yield an error manualy """ #}
-	{# {% if form.error_message %}
-		<p>Invalid Login</p>
-	{% endif %} #} 
-		<form action="{% url 'index' %}">
-			{% if form.non_field_errors %}
-				{{ form.non_field_errors }}
-			{% endif %}
-			<input type="submit" value="Sign in:"/>
-			<span>Username:</span>
-			{{ form.username }}
-			{% if form.username.error %}
-				{{ form.username.error }}
-			{% endif %}
-			<span>Password:</span>
-			{{ form.password }}
-			{% if form.password.error %}
-				{{ form.password.error }}
-			{% endif %}
-		</form> -->
+	<div class="column_wrapper">
 		<form action="{% url 'authen_view' %}" method="post">
 			{% csrf_token %}
-			<label for="username">User name:</label>
-			<input type="text" name="username" value="" id="username">
-			<label for="password">Password:</label>
-			<input type="password" name="password" value="" id="password">
-			<div><input type="submit" value="Sign in:"/></div>
+			<div class="note">
+				<div>
+					<label for="username">User name:</label>
+					<input type="text" name="username" value="" id="username">
+				</div>
+				<div>
+					<label for="password">Password:</label>
+					<input type="password" name="password" value="" id="password">
+				</div>
+				<div><input type="submit" value="Sign in:"/></div>
+			</div>
 		</form>
+	</div>
 {% endblock body %}
