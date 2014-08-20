@@ -1,7 +1,7 @@
 from django.views import generic
 from django.contrib.auth.models import User
 from django.core.context_processors import csrf
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.contrib import auth
 # from django.contrib.auth import REDIRECT_FIELD_NAME, login
 # from django.contrib.auth.forms import AuthenticationForm
@@ -60,13 +60,14 @@ def authen_view(request):
     password = request.POST.get('password', '')
     user = auth.authenticate(username=username, password=password)
 
+    
     if user is not None:
         auth.login(request, user)
         return redirect('index')
     else:
-        return redirect('login')
-
-
+        return render(request, 'task/login.html', {
+            'error_message': "Invalid Log in!",
+            })
 
 """
 still cant grasp the power need more time
