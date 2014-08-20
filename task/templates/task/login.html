@@ -11,6 +11,9 @@
 {% endblock header %}
 {% block body %}
 	<div class="column_wrapper">
+		{% if error_message %}
+			<span id="error">{{ error_message }}</span>
+		{% endif %}
 		<form action="{% url 'authen_view' %}" method="post">
 			{% csrf_token %}
 			<div class="note">
@@ -23,6 +26,7 @@
 					<input type="password" name="password" value="" id="password">
 				</div>
 				<div><input type="submit" value="Sign in:"/></div>
+				{{ p }}
 			</div>
 		</form>
 	</div>
