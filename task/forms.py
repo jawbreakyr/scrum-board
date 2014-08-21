@@ -9,12 +9,12 @@ class TaskForm(ModelForm):
 	
 	class Meta():
 		model = Task
-		fields = ('title', 'body', 'status',)
+		fields = ('title', 'body', 'status', 'owner', 'moderator')
 		widget = {'title': forms.TextInput(attrs={'placeholder': 'Search'})}
 
-	def save(self, user):
-		self.instance.created_by = user
-		return super(TaskForm, self).save()
+	# def save(self, user):
+	# 	self.instance.created_by = user
+	# 	return super(TaskForm, self).save()
 
 
 # class AuthenForm(AuthenticationForm):
