@@ -10,11 +10,11 @@
         <div id="head" class="header">
             {% if user.is_authenticated %}
             <form action="{% url 'logout' %}">
-                <input type="submit" value="Log out"/>
+                <input class="input" type="submit" value="Log out"/>
             </form>    
             {% else %}
             <form action="{% url 'login' %}">
-                <input type="submit" value="Log in:"/>
+                <input class="input" type="submit" value="Log in:"/>
             </form>
             {% endif %}
         </div>
@@ -45,26 +45,26 @@
     </div>
     <div class="form_wrapper">
         <div class="form">
-            {% if not form_valid %}
-                <form action="{% url 'index' %}" value="" method="post">
-                    {% csrf_token %}
-                    <div>
-                        <label for="title">Title:</label>
-                        <p>{{ form.title }}</p>
-                    </div>
-                    <div>
-                        <label for="body">Task:</label>
-                        <p>{{ form.body }}</p>
-                    </div>
-                    <div>
-                        <label for="status">Status:</label>
-                        <p>{{ form.status }}</p>
-                    </div>
-                    {{ form.owner }}
-                    {{ form.moderator }}
-                    <input type="submit" value="Post"/>
-                </form>
-            {% endif %}
+            <form action="{% url 'index' %}" value="" method="post">
+                {% csrf_token %}
+                <div id="form">
+                    <label for="title">Title:</label>
+                    <p>{{ form.title }}</p>
+                </div>
+                <div id="form">
+                    <label for="body">Task:</label>
+                    <p>{{ form.body }}</p>
+                </div>
+                <div id="form">
+                    <label for="status">Status:</label>
+                    <p>{{ form.status }}</p>
+                    <label for="owner">Owner:</label>
+                    <p>{{ form.owner }}</p>
+                    <label for="moderator">Moderator:</label>
+                    <p>{{ form.moderator }}</p>
+                </div>
+                <input class="button" type="submit" value="Post"/>
+            </form>
         </div>    
     </div>
 {% endblock body %}
