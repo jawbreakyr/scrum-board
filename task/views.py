@@ -55,7 +55,17 @@ class TaskListView(FormMixin, generic.ListView):
 
     def form_valid(self, form):
         form.save(self.request.user)
-        ssuper(PublisherView, self).form_valid(form)
+        super(TaskListView, self).form_valid(form)
+
+        
+    def post(self, request, *args, **kwargs):
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+        context = {"form": form}
+        return self.render_to_response(context)
+
 
 
 
@@ -77,6 +87,7 @@ def authen_view(request):
         return render(request, 'task/login.html', {
             'error_message': "Invalid Log in!",
         })
+
 
 class TaskView(generic.TemplateView):
     template_name = 'task.html'
