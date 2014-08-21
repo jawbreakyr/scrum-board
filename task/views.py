@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.core.context_processors import csrf
 from django.shortcuts import render, redirect, render_to_response
 from django.contrib import auth
+from django.views.generic.edit import FormMixin
+from django.core.urlresolvers import reverse_lazy
 # from django.contrib.auth import REDIRECT_FIELD_NAME, login
 # from django.contrib.auth.forms import AuthenticationForm
 # from django.utils.decorators import method_decorator
@@ -17,21 +19,17 @@ from task.forms import TaskForm
 from task.models import Task
 
 
-# def home(request):
-#   tasks = Task.objects.all()
-#   form = TaskForm()
-#   c = {'form': form, 'tasks': tasks }
-#   return render(request, 'task/home.html', c)
-
-
 # Implementing the use of generic class based views
-class PublisherView(generic.ListView):
+class TaskListView(FormMixin, generic.ListView):
     template_name = 'task/index.html'
     # context_object_name = "tasks"
     queryset = Task.objects.all()
+    form_class = TaskForm
+    success_url = reverse_lazy("index")
+
 
     def get_context_data(self, **kwargs):
-        context = super(PublisherView, self).get_context_data(**kwargs)
+        context = super(TaskListView, self).get_context_data(**kwargs)
         # appended the objects to the context dictionary (force)
         context['form'] = TaskForm()
         """
@@ -55,6 +53,11 @@ class PublisherView(generic.ListView):
         context['user'] = User
         return context
 
+    def form_valid(self, form):
+        form.save(self.request.user)
+        ssuper(PublisherView, self).form_valid(form)
+
+
 
 def login(request):
     c = {}
@@ -74,6 +77,11 @@ def authen_view(request):
         return render(request, 'task/login.html', {
             'error_message': "Invalid Log in!",
         })
+
+class TaskView(generic.TemplateView):
+    template_name = 'task.html'
+
+
 
 """
 still cant grasp the power need more time

@@ -1,16 +1,25 @@
 body {
     background-color: #EEE;
+    height: 100%;
 }
 
 .board-wrapper {
     background-color: #0E9F67;
     font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    border-radius: 4px;
+}
+
+.board-wrapper:after {
+    content: "";
+    display: block;
+    clear: both;
 }
 
 .column_wrapper {
     display: inline;
     float: left;
-    margin-left: 0.5em;
+    margin-top: 2px;
+    margin-left: 2px;
     background-color: #E3E3E3;
     padding: 0.5em;
     border-radius: 4px;
@@ -22,7 +31,7 @@ body {
 
 .note {
     display: block;
-    margin: 0;
+    margin: 0spx;
     background-color: white;
     width: 200px;
     border-radius: 4px;
@@ -37,12 +46,12 @@ body {
 
 .side-bar {
     display: inline;
-    float: left;
-    margin-left: 0.5em;
+    float: right;
+    margin: 2px;
     background-color: #E3E3E3;
     padding: 0.5em;
     border-radius: 4px;
-    width: 222px;
+    width: 235px;
     height: 410px;
 
 }

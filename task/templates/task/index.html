@@ -43,4 +43,24 @@
             <h5>{{ user }}</h5>
         </div>
     </div>
+    <div class="form_wrapper">
+        <div class="form">
+            <form action="{% url 'index' %}" value="" method="post">
+                {% csrf_token %}
+                <div>
+                    <label for="title">Title:</label>
+                    <p>{{ form.title }}</p>
+                </div>
+                <div>
+                    <label for="body">Task:</label>
+                    <p>{{ form.body }}</p>
+                </div>
+                <div>
+                    <label for="status">Status:</label>
+                    <p>{{ form.status }}</p>
+                </div>
+                <input type="submit" value="Post"/>
+            </form>
+        </div>    
+    </div>
 {% endblock body %}

@@ -6,12 +6,12 @@ admin.autodiscover()
 
 # from task.views import HomeView
 from task.models import Task
-from task.views import PublisherView
+from task.views import TaskListView
 from task import views
 
 
 urlpatterns = patterns('',
-	url(r'^$', PublisherView.as_view(), name='index'),
+	url(r'^$', TaskListView.as_view(), name='index'),
 		# queryset = Task.objects.all(),
 		# context_object_name="tasks",
 		# )),

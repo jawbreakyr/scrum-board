@@ -12,12 +12,9 @@ class TaskForm(ModelForm):
 		fields = ('title', 'body', 'status',)
 		widget = {'title': forms.TextInput(attrs={'placeholder': 'Search'})}
 
-	def clean(self):
-		title = self.cleaned_data.POST.get('title')
-		body = self.cleaned_data.POST.get('body')
-		status = self.cleaned_data.POST.get('status')
-
-		return self.cleaned_data
+	def save(self, user):
+		self.instance.created_by = user
+		return super(TaskForm, self).save()
 
 
 # class AuthenForm(AuthenticationForm):
