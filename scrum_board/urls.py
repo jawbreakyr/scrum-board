@@ -16,6 +16,8 @@ urlpatterns = patterns('',
 		# context_object_name="tasks",
 		# )),
     url(r'^login/', views.login, name='login'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'},
+        name='logout'),
     url(r'^authen/', views.authen_view, name='authen_view'),
     # url(r'^login/$', LoginView.as_view(), name="login"),
     # Examples:
