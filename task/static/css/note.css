@@ -1,4 +1,4 @@
-body {
+html, body {
     background-color: #EEE;
     height: 100%;
 }
@@ -7,6 +7,7 @@ body {
     background-color: #0E9F67;
     font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
     border-radius: 4px;
+    margin-bottom: 0px;
 }
 
 .board-wrapper:after {
@@ -44,6 +45,8 @@ body {
     padding: 8px;
 }
 
+/* -------------------------------------TASK UI CSS------------------------------------------------- */
+
 .side-bar {
     display: inline;
     float: right;
@@ -59,3 +62,74 @@ body {
 #error {
     color: #D80000;
 }
+
+/* ------------------------------------SIDE_BAR UI CSS------------------------------------------------ */
+
+.form_wrapper {
+    background-color: #1B93BF;
+    font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    border-radius: 4px;
+    margin-bottom: 0px;
+    height: 500px;
+}
+
+.form {
+    margin-bottom: 10px;
+    margin-left: 2px;
+    margin-top: 2px; 
+    background-color: #E3E3E3;
+    width: 500px;
+    border-radius: 4px;
+    height: 400px;
+    float: left;
+}
+
+#form {
+    margin: 0px;
+}
+
+#form p {
+    margin: 0px;
+    margin-left: 10px;
+}
+
+#form label {
+    margin-left: 5px;
+    font-weight: bold   
+}
+
+/* --------------------------------TASK_FORM UI CSS----------------------------------------  */
+
+.button {
+    background-color: #3C4663;
+    border: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.5);
+    color: white;
+    cursor: pointer;
+    font-family: 'Nobile',sans-serif;
+    font-style: italic;
+    font-weight: 900;
+    margin:0px 0px;
+    padding: 3px 20px;
+    margin-left: 5px;
+    margin-top: 6px;
+}
+
+.login {
+    display: block;
+    margin: 0spx;
+    background-color: white;
+    width: 200px;
+    border-radius: 4px;
+    color: #393939;
+    margin-top: 8px;
+    box-shadow: 0px 2px #CCC;
+    height: 135px;
+}
+
+/* -------------------------------------BUTTON UI CSS --------------------------------------- */
