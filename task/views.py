@@ -41,10 +41,16 @@ class PublisherView(generic.ListView):
             'to do': [task2, task3, task5],
         }
         """
-        task_data = []
-        for choice in Task.STATUS_CHOICES:  # ready the keys
-            task_data.append(
-                (choice[1], Task.objects.all().filter(status=choice[0])))
+        task_data = None
+        if self.request.user.is_authenticated:
+            task_data = []
+            # iterate all status choices
+            # for each choice, retrieve status_id and status_name
+            # then append the choice to task_data to preserve order
+            for choice in Task.STATUS_CHOICES:
+                task_data.append(
+                    #  choice[0] status_id, choice[1] status_name
+                    (choice[1], Task.objects.all().filter(status=choice[0])))
         context['task_data'] = task_data
         context['user'] = User
         return context
@@ -55,19 +61,19 @@ def login(request):
     c.update(csrf(request))
     return render(request, 'task/login.html', c)
 
+
 def authen_view(request):
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
     user = auth.authenticate(username=username, password=password)
 
-    
     if user is not None:
         auth.login(request, user)
         return redirect('index')
     else:
         return render(request, 'task/login.html', {
             'error_message': "Invalid Log in!",
-            })
+        })
 
 """
 still cant grasp the power need more time
