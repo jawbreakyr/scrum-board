@@ -9,7 +9,7 @@
     <div class="head_wrapp">
         <div id="head" class="header">
             {% if user.is_authenticated %}
-            <form action="/">
+            <form action="{% url 'logout' %}">
                 <input type="submit" value="Log out"/>
             </form>    
             {% else %}
@@ -22,20 +22,23 @@
 {% endblock header %}
 {% block body %}
     <div class="board-wrapper">
-        {% for status, tasks in task_data %}
-            <div class="column_wrapper">
-                <span>{{ status }}</span>
-                {% for task in tasks %}
-                    <div class="note">
-                        <article>                 
-                            <strong>{{ task.title }}</strong><br>
-                            {{ task.body|truncatechars:50 }}<br/>
-                            {{ user }}
-                        </article>
-                    </div>            
-                {% endfor %}
-            </div>
-        {% endfor %}
+        {% if user.is_authenticated %}
+            {% for status, tasks in task_data %}
+                <div class="column_wrapper">
+                    <span>{{ status }}</span>
+                    {% for task in tasks %}
+                        <div class="note">
+                            <article>                 
+                                <strong>{{ task.title }}</strong><br>
+                                {{ task.body|truncatechars:50 }}<br/>
+                                {# {{ user }} #}
+                                {{ task.owner }}
+                            </article>
+                        </div>            
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        {% endif %}
         <div class="side-bar">
             <h5>{{ user }}</h5>
         </div>
