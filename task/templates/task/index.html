@@ -8,9 +8,15 @@
 {% block header %}
     <div class="head_wrapp">
         <div id="head" class="header">
+            {% if user.is_authenticated %}
+            <form action="/">
+                <input type="submit" value="Log out"/>
+            </form>    
+            {% else %}
             <form action="{% url 'login' %}">
                 <input type="submit" value="Log in:"/>
             </form>
+            {% endif %}
         </div>
     </div>
 {% endblock header %}
