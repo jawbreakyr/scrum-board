@@ -1,0 +1,35 @@
+/* line 6, ../sass/task.scss */
+.note {
+  background-color: white;
+  color: #393939;
+  margin-top: 6px;
+  border-radius: 3px;
+  border-bottom: 1px solid #C2C2C2;
+  width: 200px;
+  overflow: hidden;
+  padding: 6px 4px;
+}
+/* line 16, ../sass/task.scss */
+.note .members {
+  float: right;
+  margin-bottom: 2px;
+}
+/* line 20, ../sass/task.scss */
+.note .members .member-initials {
+  padding: 4px;
+  color: #383838;
+  background-color: #d7d7d7;
+  border-radius: 3px;
+}
+
+/* line 29, ../sass/task.scss */
+.add-task {
+  color: #A6A6A6;
+  text-decoration: none;
+  display: block;
+}
+/* line 34, ../sass/task.scss */
+.add-task:hover {
+  background-color: #C3C3C3;
+  color: black;
+}
