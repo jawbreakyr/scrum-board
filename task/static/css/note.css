@@ -30,7 +30,7 @@ html, body {
     font-weight: bold;
 }
 
-.note {
+/*.note {
     display: block;
     margin: 0spx;
     background-color: white;
@@ -44,6 +44,13 @@ html, body {
 .note article {
     padding: 8px;
 }
+
+.note-owner {
+    padding: 0.5em;
+    background-color: #E3E3E3;
+    border-radius: 4px;
+    float: right;
+}*/
 
 /* -------------------------------------TASK UI CSS------------------------------------------------- */
 
