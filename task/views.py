@@ -10,10 +10,10 @@ from django.core.urlresolvers import reverse_lazy
 # from django.utils.decorators import method_decorator
 # from django.views.decorators.cache import never_cache
 # from django.views.decorators.csrf import csrf_protect
-#from django.views.generic import View
+# from django.views.generic import View
 # from django.views.generic.edit import FormView
-#from django.conf import settings
-#import urlparse
+# from django.conf import settings
+# import urlparse
 
 from task.forms import TaskForm
 from task.models import Task
@@ -57,7 +57,6 @@ class TaskListView(FormMixin, generic.ListView):
         form.save(self.request.user)
         super(TaskListView, self).form_valid(form)
 
-        
     def post(self, request, *args, **kwargs):
         form = TaskForm(request.POST)
         if form.is_valid():
@@ -65,8 +64,6 @@ class TaskListView(FormMixin, generic.ListView):
             return redirect('index')
         context = {"form": form}
         return self.render_to_response(context)
-
-
 
 
 def login(request):
@@ -93,10 +90,9 @@ class TaskView(generic.TemplateView):
     template_name = 'task.html'
 
 
-
 """
 still cant grasp the power need more time
-to carve in for mean time settle down for 
+to carve in for mean time settle down for
 function based views.
 """
 # class LoginView(FormView):
