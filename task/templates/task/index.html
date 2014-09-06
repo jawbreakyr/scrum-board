@@ -3,7 +3,6 @@
 {% load task_extras %}
 {% load staticfiles %}
 {% block extra_head %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href=" {% static 'stylesheets/task.css' %} ">
     <link rel="stylesheet" type="text/css" href=" {% static 'css/note.css' %} ">
     <link rel="stylesheet" type="text/css" href=" {% static 'css/header.css' %} ">
@@ -100,7 +99,7 @@
       </div>
     </div>
 
+    <script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
 {% endblock body %}
 
