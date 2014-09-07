@@ -59,17 +59,13 @@ class TaskListView(FormMixin, generic.ListView):
 
     def post(self, request, *args, **kwargs):
         form = TaskForm(request.POST)
-        if form.is_valid():
+        context = {"form": form}
+        if not form.is_valid():
+            return redirect('index')
+        else:
+            form.is_valid()
             form.save()
             return redirect('index')
-        context = {"form": form}
-        return self.render_to_response(context)
-
-
-def login(request):
-    c = {}
-    c.update(csrf(request))
-    return render(request, 'task/login.html', c)
 
 
 def authen_view(request):
@@ -81,7 +77,7 @@ def authen_view(request):
         auth.login(request, user)
         return redirect('index')
     else:
-        return render(request, 'task/login.html', {
+        return render(request, 'task/index.html', {
             'error_message': "Invalid Log in!",
         })
 

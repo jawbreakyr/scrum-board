@@ -12,20 +12,18 @@
     <div class="head_wrapp">
         <div id="head" class="header">
             {% if user.is_authenticated %}
-            <form action="{% url 'logout' %}">
-                <input class="input" type="submit" value="Log out"/>
-            </form>    
+                <form action="{% url 'logout' %}">
+                    <input class="input" type="submit" value="Log out"/>
+                </form>    
             {% else %}
-            <form action="{% url 'login' %}">
-                <input class="input" type="submit" value="Log in:"/>
-            </form>
+                <input class="input" data-toggle="modal" data-target="#myModalLogin" type="submit" value="Log in:"/>
             {% endif %}
         </div>
     </div>
 {% endblock header %}
 {% block body %}
-    <div class="board-wrapper">
-        {% if user.is_authenticated %}
+    {% if user.is_authenticated %}
+        <div class="board-wrapper">
             {% for status, tasks in task_data %}
                 <div class="column_wrapper">
                     <span>{{ status }}</span>
@@ -41,62 +39,82 @@
                         </div>
                     {% endfor %}
                     <br>
-                    <a href="" class="add-task">Add a task...</a>
+                    <!-- MODAL TRIGGER -->
+                    <a href="" class="add-task" data-toggle="modal" data-target="#myModal">Add a task...</a>
                 </div>
             {% endfor %}
-        {% endif %}
-        <!--div class="side-bar">
-            <h5>{{ user }}</h5>
-        </div-->
-    </div>
-
-    <!-- Button trigger modal -->
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-      Launch demo modal
-    </button>
+            <div class="side-bar">
+                <h5>{{ user }}</h5>
+            </div>
+        </div>
+    {% else %}
+        <span id="error">{{ error_message }}</span>
+    {% endif %}
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-          </div>
-          <div class="modal-body">
-            <div class="form_wrapper">
-                {% if user.is_authenticated %}
-                    <div class="form">
-                        <form action="{% url 'index' %}" value="" method="post">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Create a Task</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form_wrapper">
+                        <div class="form">
+                            <form action="{% url 'index' %}" value="" method="post">
+                                {% csrf_token %}
+                                <div id="form">
+                                    <label for="title">Title:</label>
+                                    <p>{{ form.title }}</p>
+                                </div>
+                                <div id="form">
+                                    <label for="body">Task:</label>
+                                    <p>{{ form.body }}</p>
+                                </div>
+                                <div id="form">
+                                    <label for="status">Status:</label>
+                                    <p>{{ form.status }}</p>
+                                    <label for="owner">Owner:</label>
+                                    <p>{{ form.owner }}</p>
+                                    <label for="moderator">Moderator:</label>
+                                    <p>{{ form.moderator }}</p>
+                                </div>
+                                <input class="button" type="submit" value="Post"/>
+                            </form>
+                        </div>    
+                    </div>        
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Create a Task</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="column_wrapper">
+                        <form action="{% url 'authen_view' %}" method="post">
                             {% csrf_token %}
-                            <div id="form">
-                                <label for="title">Title:</label>
-                                <p>{{ form.title }}</p>
+                            <div class="login">
+                                <div>
+                                    <label for="username">User name:</label>
+                                    <input type="text" name="username" value="" id="username">
+                                </div>
+                                <div>
+                                    <label for="password">Password:</label>
+                                    <input type="password" name="password" value="" id="password">
+                                </div>
+                                <div><input class="button" type="submit" value="Sign in:"/></div>
                             </div>
-                            <div id="form">
-                                <label for="body">Task:</label>
-                                <p>{{ form.body }}</p>
-                            </div>
-                            <div id="form">
-                                <label for="status">Status:</label>
-                                <p>{{ form.status }}</p>
-                                <label for="owner">Owner:</label>
-                                <p>{{ form.owner }}</p>
-                                <label for="moderator">Moderator:</label>
-                                <p>{{ form.moderator }}</p>
-                            </div>
-                            <input class="button" type="submit" value="Post"/>
                         </form>
                     </div>
-                {% endif %}    
-            </div>        
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
