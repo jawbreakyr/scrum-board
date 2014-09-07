@@ -1,6 +1,6 @@
 .head_wrapp {
     position: relative;
-    height: 80px;
+    height: 60px;
     background-color: #E3E3E3;
     border-radius: 4px;
     margin-bottom: 4px;
@@ -32,8 +32,8 @@
   font-family: 'Nobile',sans-serif;
   font-style: italic;
   font-weight: 900;
-  margin:0px 0px;
-  padding: 7px 20px;
+  margin:0px 25px;
+  padding: 3px 10px;
 
   &:hover {
     background-color: lighten(#000, 20%);

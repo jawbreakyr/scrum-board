@@ -78,7 +78,7 @@ def authen_view(request):
         return redirect('index')
     else:
         return render(request, 'task/index.html', {
-            'error_message': "Invalid Log in!",
+            'error_message': "Invalid Log in Details!! Please Try Again.",
         })
 
 

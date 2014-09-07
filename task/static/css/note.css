@@ -19,8 +19,7 @@ html, body {
 .column_wrapper {
     display: inline;
     float: left;
-    margin-top: 2px;
-    margin-left: 2px;
+    margin: 3px;
     background-color: #E3E3E3;
     padding: 0.5em;
     border-radius: 4px;
@@ -36,7 +35,7 @@ html, body {
 .side-bar {
     display: inline;
     float: right;
-    margin: 2px;
+    margin: 3px;
     background-color: #E3E3E3;
     padding: 0.5em;
     border-radius: 4px;
@@ -47,9 +46,31 @@ html, body {
 
 #error {
     color: #D80000;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 20px;
+    margin-left: 20px;
 }
 
 /* ------------------------------------SIDE_BAR UI CSS------------------------------------------------ */
+
+.form_wrapper_login {
+    background-color: #1B93BF;
+    font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    border-radius: 4px;
+    margin-bottom: 0px;
+    height: 155px;
+}
+
+.form_login {
+    margin-bottom: 10px;
+    margin-left: 2px;
+    margin-top: 2px; 
+    background-color: #E3E3E3;
+    width: 270px;
+    border-radius: 4px;
+    height: 150px;
+    float: left;
+}
 
 .form_wrapper {
     background-color: #1B93BF;
@@ -108,14 +129,20 @@ html, body {
 
 .login {
     display: block;
-    margin: 0spx;
-    background-color: white;
-    width: 200px;
+    margin: 0px;
+    background-color: #81A594;
+    width: 240px;
     border-radius: 4px;
     color: #393939;
-    margin-top: 8px;
+    margin-top: 5px;
     box-shadow: 0px 2px #CCC;
     height: 135px;
+    margin-left: 5px
+}
+
+.login_attr {
+    margin-left: 8px;
+    margin-top: 5px;
 }
 
 /* -------------------------------------BUTTON UI CSS --------------------------------------- */
