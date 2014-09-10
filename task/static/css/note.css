@@ -6,8 +6,10 @@ html, body {
 .board-wrapper {
     background-color: #0E9F67;
     font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
-    border-radius: 4px;
+    border-radius: 6px;
     margin-bottom: 0px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
 .board-wrapper:after {
@@ -29,6 +31,30 @@ html, body {
     font-weight: bold;
 }
 
+.board-wrapper-null {
+    background-color: #0E9F67;
+    font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    border-radius: 4px;
+    margin-bottom: 0px;
+    height: 416px;
+    margin-right: 3px;
+    margin-left: 3px;
+}
+
+.board-wrapper-null:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.column_wrapper-null {
+    display: inline;
+    float: left;
+    margin: 3px;
+    padding: 0.5em;
+    border-radius: 4px;
+    height: 450px;
+}
 
 /* -------------------------------------TASK UI CSS------------------------------------------------- */
 
@@ -65,9 +91,8 @@ html, body {
     margin-bottom: 10px;
     margin-left: 2px;
     margin-top: 2px; 
-    background-color: #E3E3E3;
     width: 270px;
-    border-radius: 4px;
+    border-radius: 6px;
     height: 150px;
     float: left;
 }
@@ -108,7 +133,7 @@ html, body {
 /* --------------------------------TASK_FORM UI CSS----------------------------------------  */
 
 .button {
-    background-color: #3C4663;
+    background-color: #000000;
     border: none;
     border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -130,12 +155,10 @@ html, body {
 .login {
     display: block;
     margin: 0px;
-    background-color: #81A594;
     width: 240px;
-    border-radius: 4px;
+    border-radius: 16px;
     color: #393939;
     margin-top: 5px;
-    box-shadow: 0px 2px #CCC;
     height: 135px;
     margin-left: 5px
 }

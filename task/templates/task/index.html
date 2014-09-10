@@ -5,19 +5,26 @@
 {% block extra_head %}
     <link rel="stylesheet" type="text/css" href=" {% static 'stylesheets/task.css' %} ">
     <link rel="stylesheet" type="text/css" href=" {% static 'css/note.css' %} ">
+    <link rel="stylesheet" type="text/css" href=" {% static 'css/footer.css' %} ">
     <link rel="stylesheet" type="text/css" href=" {% static 'css/header.css' %} ">
+    <link rel="stylesheet" type="text/css" href=" {% static 'css/bio.css' %} ">
     <link rel="stylesheet" type="text/css" href=" {% static 'bcss/bootstrap.css' %} ">
 {% endblock extra_head %}
 {% block header %}
     <div class="head_wrapp">
         <div id="head" class="header">
+            <ol class="breadcrumb">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Polls</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">About</a></li>
+            </ol>
             {% if user.is_authenticated %}
                 <form action="{% url 'logout' %}">
-                    <input class="input" type="submit" value="Log out"/>
+                    <button class="input" type="submit">Log out</button>
                 </form>    
             {% else %}
                 <button class="input" data-toggle="modal" data-target=".bs-example-modal-sm">Log in:</button>
-                <!--<input class="input" data-toggle="modal" data-target="#myModalLogin" type="submit" value="Log in:"/>-->
             {% endif %}
         </div>
     </div>
@@ -41,7 +48,7 @@
                     {% endfor %}
                     <br>
                     <!-- MODAL TRIGGER -->
-                    <div data-toggle="tooltip" data-placement="bottom" title="Featured Tooltip">
+                    <div data-toggle="tooltip" data-placement="bottom" title="Add task">
                         <a href="" class="add-task" data-toggle="modal" data-target="#myModal">Add a task...</a>
                     </div>
                 </div>
@@ -51,8 +58,19 @@
             </div>
         </div>
     {% else %}
-        <span id="error">{{ error_message }}</span>
+        <div class="board-wrapper-null">
+            <div class="column_wrapper-null">
+                <span id="error">{{ error_message }}</span>
+                <img src="static/images/hobort.png"/>
+            </div>
+            <div class="bio-cont">
+                {% include "task/bio.html" %}
+            </div>
+        </div>
     {% endif %}
+        <div class="footer">
+            dsadsa
+        </div>
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -91,14 +109,14 @@
             </div>
         </div>
     </div>
-    <!-- Small modal -->
-
+    
+    <!-- Modal -->
     <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title" id="mySmallModalLabel">Ayo...</h4>
+                    <h4 class="modal-title" id="mySmallModalLabel"><strong>Ayo...</strong></h4>
                 </div>
                 <div class="form_wrapper_login">
                     <div class="form_login">

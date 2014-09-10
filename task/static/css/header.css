@@ -1,21 +1,37 @@
 .head_wrapp {
-    position: relative;
-    height: 60px;
-    background-color: #E3E3E3;
-    border-radius: 4px;
-    margin-bottom: 4px;
+  position: relative;
+  height: 60px;
+  background-color: #E3E3E3;
+  border-radius: 4px;
+  margin-bottom: 4px;
 
 }
 
 .header {
-    padding: 25px;
-    position: absolute;
-    right: 25px;
+  padding: 25px;
+  position: absolute;
+  right: 25px;
 }
 
 #head {
   padding: 0px;
   margin-top: 20px;
+}
+
+.breadcrumb {
+  position: fixed;
+  top: 11px;
+  left: 20px;     
+}
+
+.breadcrumb a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: #989898;
+  text-decoration: none;
 }
 
 .input {
