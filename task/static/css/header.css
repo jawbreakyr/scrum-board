@@ -3,7 +3,7 @@
   height: 60px;
   background-color: #E3E3E3;
   border-radius: 4px;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 
 }
 
@@ -20,7 +20,7 @@
 
 .breadcrumb {
   position: fixed;
-  top: 11px;
+  top: 0px;
   left: 20px;     
 }
 
@@ -33,6 +33,11 @@
   color: #989898;
   text-decoration: none;
 }
+
+.breadcrumb img {
+  margin-left: 255px;
+}
+
 
 .input {
   background-color: black;

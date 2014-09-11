@@ -1,10 +1,12 @@
 from django.views import generic
+from django.views.generic.edit import DeleteView
 from django.contrib.auth.models import User
 from django.core.context_processors import csrf
 from django.shortcuts import render, redirect, render_to_response
 from django.contrib import auth
 from django.views.generic.edit import FormMixin
 from django.core.urlresolvers import reverse_lazy
+
 # from django.contrib.auth import REDIRECT_FIELD_NAME, login
 # from django.contrib.auth.forms import AuthenticationForm
 # from django.utils.decorators import method_decorator
@@ -48,7 +50,7 @@ class TaskListView(FormMixin, generic.ListView):
             for choice in Task.STATUS_CHOICES:
                 task_data.append(
                     #  choice[0] status_id, choice[1] status_name
-                    (choice[1], Task.objects.all().filter(status=choice[0])))
+                    (choice[1], Task.objects.filter(status=choice[0])[:3]))
         context['task_data'] = task_data
         context['user'] = User
         return context
@@ -82,8 +84,40 @@ def authen_view(request):
         })
 
 
-class TaskView(generic.TemplateView):
-    template_name = 'task.html'
+# class TaskDelete(DeleteView):
+#     model = Task
+#     success_url = reverse_lazy("index")
+#     template_name = 'index.html'
+
+# CF CF CF CF CF CF CF CF 
+
+class TaskDelete(DeleteView):
+    model = Task
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        context = self.get_context_data(object=self.object)
+        return self.render_to_response(context)
+
+    def post(self, request, *args, **kwargs):
+        form = TaskForm(request.POST)
+        context = {"form": form}
+        if not form.is_valid():
+            return redirect('index')
+        else:
+            form.is_valid()
+            form.delete()
+            return redirect('index')
+
+
+
+# def delete(request, id):
+#     note = get_object_or_404(Note, pk=id).delete()
+#     return HttpResponseRedirect(reverse('notes.views.notes'))
+
+
+# class TaskView(generic.TemplateView):
+#     template_name = 'task.html'
 
 
 """

@@ -13,13 +13,14 @@
 {% block header %}
     <div class="head_wrapp">
         <div id="head" class="header">
-            <ol class="breadcrumb">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Polls</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">About</a></li>
-            </ol>
             {% if user.is_authenticated %}
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Polls</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><img class="main-logo" src="static/images/scrum.png"/></li>
+                </ol>
                 <form action="{% url 'logout' %}">
                     <button class="input" type="submit">Log out</button>
                 </form>    
@@ -35,18 +36,21 @@
             {% for status, tasks in task_data %}
                 <div class="column_wrapper">
                     <span>{{ status }}</span>
-                    {% for task in tasks %}
-                        <div class="note">
-                            <div class="note-body">
-                                <strong>{{ task.title }}</strong><br>
-                                {{ task.body|truncatechars:20 }}<br/>
-                            </div>            
-                            <div class="members">
-                                <span class="member-initials">{{ task.owner.username|shortify }}</span>
+                        {% for task in tasks %}
+                            <div class="note">
+                                <div class="note-body">
+                                    <strong>{{ task.title }}</strong>
+                                    <button type="button" class="close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button><br/>
+                                    {{ task.body|truncatechars:20 }}<br/>
+                                </div>            
+                                <div class="members">
+                                    <span class="member-initials">{{ task.owner.username|shortify }}</span>
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
-                    <br>
+                        {% endfor %}
+                    <br/>
                     <!-- MODAL TRIGGER -->
                     <div data-toggle="tooltip" data-placement="bottom" title="Add task">
                         <a href="" class="add-task" data-toggle="modal" data-target="#myModal">Add a task...</a>
