@@ -11,10 +11,10 @@ from task import views
 
 
 urlpatterns = patterns('',
-	url(r'^$', TaskListView.as_view(), name='index'),
-		# queryset = Task.objects.all(),
-		# context_object_name="tasks",
-		# )),
+    url(r'^$', TaskListView.as_view(), name='index'),
+        # queryset = Task.objects.all(),
+        # context_object_name="tasks",
+        # )),
     # url(r'^delete/(?P<pk>\d+)/', TaskDelete.as_view(), name="delete"),
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'},
         name='logout'),

@@ -18,6 +18,11 @@ html, body {
     clear: both;
 }
 
+.footer-container{
+    margin-left: 35%;
+    margin-right: 33%;
+}
+
 .column_wrapper {
     display: inline;
     float: left;
@@ -32,11 +37,10 @@ html, body {
 }
 
 .board-wrapper-null {
-    background-color: #0E9F67;
     font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
     border-radius: 4px;
     margin-bottom: 0px;
-    height: 416px;
+    height: 56%;
     margin-right: 3px;
     margin-left: 3px;
 }
@@ -50,10 +54,14 @@ html, body {
 .column_wrapper-null {
     display: inline;
     float: left;
-    margin: 3px;
+    margin-left: 24%;
+    margin-top: -8%;
     padding: 0.5em;
     border-radius: 4px;
-    height: 450px;
+}
+
+.modal-content {
+    width: 124%;
 }
 
 /* -------------------------------------TASK UI CSS------------------------------------------------- */
@@ -102,7 +110,7 @@ html, body {
     font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
     border-radius: 4px;
     margin-bottom: 0px;
-    height: 405px;
+    height: 183px;
 }
 
 .form {

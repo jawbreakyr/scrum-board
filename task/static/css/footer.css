@@ -1,6 +1,6 @@
 .footer {
 	background-color: #404040;
-	height: 152px;
+	height: 8%;
 	border-top-left-radius: 6px;
 	border-top-right-radius: 6px;
 	margin-top: 3px;
@@ -8,4 +8,14 @@
 	margin-left: 3px;
 	padding: 0px;
 	margin-bottom: 0px;
+}
+
+.socials{
+	height: 28px;
+	margin-right: 20px;
+}
+
+.footer-container p{
+	display: inline-block !important;
+	margin-right: 14px !important;
 }

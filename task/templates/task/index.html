@@ -19,7 +19,7 @@
                     <li><a href="#">Polls</a></li>
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">About</a></li>
-                    <li><img class="main-logo" src="static/images/scrum.png"/></li>
+                    <li><img class="main-logo" src="{{ STATIC_URL }}images/scrum.png"/></li>
                 </ol>
                 <form action="{% url 'logout' %}">
                     <button class="input" type="submit">Log out</button>
@@ -64,8 +64,7 @@
     {% else %}
         <div class="board-wrapper-null">
             <div class="column_wrapper-null">
-                <span id="error">{{ error_message }}</span>
-                <img src="static/images/hobort.png"/>
+                <img src="{{ STATIC_URL }}images/hobort.png"/>
             </div>
             <div class="bio-cont">
                 {% include "task/bio.html" %}
@@ -73,11 +72,13 @@
         </div>
     {% endif %}
         <div class="footer">
-            <a href="https://www.python.org/"><img src="{% static 'images/pie.png' %}"/></a>
-            <a href="https://www.djangoproject.com/"><img src="{% static 'images/badge.png' %}"/></a>
-            <a href="https://twitter.com/jawfartz/"><img src="{% static 'images/twitter.png' %}"/></a>
-            <a href="https://github.com/jawbreakyr/"><img src="{% static 'images/github.png' %}"/></a>
-            <p>All rights reserved 2014.s</p>
+            <div class="footer-container">
+                <p>All rights reserved 2014.</p>
+                <a href="https://www.python.org/"><img class="socials" src="{{ STATIC_URL }}images/pie.png"/></a>
+                <a href="https://www.djangoproject.com/"><img class="socials" src="{{ STATIC_URL }}images/badge.png"/></a>
+                <a href="https://twitter.com/jawfartz/"><img class="socials" src="{{ STATIC_URL }}images/twitter.png"/></a>
+                <a href="https://github.com/jawbreakyr/"><img class="socials" src="{{ STATIC_URL }}images/github.png"/></a>
+            </div>
         </div>
 
     <!-- Modal -->
@@ -127,19 +128,22 @@
                     <h4 class="modal-title" id="mySmallModalLabel"><strong>Ayo...</strong></h4>
                 </div>
                 <div class="form_wrapper_login">
+                    <div>
+                        <span id="error">{{ error_message }}</span>
+                    </div>
                     <div class="form_login">
                         <form action="{% url 'authen_view' %}" method="post">
                             {% csrf_token %}
                             <div class="login">
                                 <div class="login_attr">
-                                    <label for="username">User name:</label>
-                                    <input type="text" name="username" value="" id="username">
+                                    <div class="login_attr">
+                                        <label for="username">User name:</label>
+                                        <input type="text" name="username" value="" id="username">
+                                        <label for="password">Password:</label>
+                                        <input type="password" name="password" value="" id="password">
+                                    </div>
+                                    <div><input class="button" type="submit" value="Sign in:"/></div>
                                 </div>
-                                <div class="login_attr">
-                                    <label for="password">Password:</label>
-                                    <input type="password" name="password" value="" id="password">
-                                </div>
-                                <div><input class="button" type="submit" value="Sign in:"/></div>
                             </div>
                         </form>
                     </div>
